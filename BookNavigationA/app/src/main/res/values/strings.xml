@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BookNavigationA</string>
+    <string name="label_author">Authors</string>
+    <string name="label_books">Books</string>
+    <string name="title_book_inf">TITLE:</string>
+    <string name="author_name_book_inf">AUTHOR NAME:</string>
+    <string name="book_date">PUBLICATION:</string>
+    <string name="book_inf_read">READ</string>
+    <string name="book_inf_description">DESCRIPTION:</string>
+</resources>
