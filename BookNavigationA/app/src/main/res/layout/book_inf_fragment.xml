@@ -5,126 +5,154 @@
                 android:layout_height="match_parent"
                 android:background="@color/background"
                 android:orientation="vertical">
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_x="0px"
         android:layout_y="25px"
         android:scrollbars="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"/>
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_weight="10"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_book_inf"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/text_size"/>
-
-                <TextView
-                    android:id="@+id/book_inf_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/text_size"
-                    tools:text="book title"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/author_name_book_inf"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/text_size"/>
-
-                <TextView
-                    android:id="@+id/author_inf_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/text_size"
-                    tools:text="author name"/>
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
-                        android:text="@string/book_date"
+                        android:text="@string/title_book_inf"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/text_size"/>
 
                     <TextView
-                        android:id="@+id/year_public"
+                        android:id="@+id/book_inf_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/text_size"
-                        tools:text="1990"/>
+                        tools:text="book title"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/author_name_book_inf"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size"/>
+
+                    <TextView
+                        android:id="@+id/author_inf_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size"
+                        tools:text="author name"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/book_date"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size"/>
+
+                        <TextView
+                            android:id="@+id/year_public"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size"
+                            tools:text="1990"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/series_label_book_ing"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size"
+                            tools:text="series-1"/>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/book_inf_read"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/book_inf_read"/>
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/book_inf_read"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/book_inf_read"/>
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/book_inf_description"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size"/>
+
+            <TextView
+                android:id="@+id/book_inf_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="description"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size"/>
+
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/book_inf_description"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size"/>
-
-        <TextView
-            android:id="@+id/book_inf_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size"
-            android:text="description"/>
-
-    </LinearLayout>
     </ScrollView>
 
     <include
