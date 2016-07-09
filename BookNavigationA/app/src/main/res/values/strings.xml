@@ -8,4 +8,7 @@
     <string name="book_inf_read">READ</string>
     <string name="book_inf_description">DESCRIPTION:</string>
     <string name="series_label_book_ing">SERIES:</string>
+    <string name="book_inf_genre">GENRE:</string>
+    <string name="add_to_list">ADD TO LIST</string>
+    <string name="was_read">WAS READ</string>
 </resources>
