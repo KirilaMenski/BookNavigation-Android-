@@ -19,6 +19,7 @@ public class CursorWrapper extends android.database.CursorWrapper {
         String uuid = getString(getColumnIndex(DBSchema.BookTable.Cols.UUID));
         String cover = getString(getColumnIndex(DBSchema.BookTable.Cols.COVER));
         String title = getString(getColumnIndex(DBSchema.BookTable.Cols.TITLE));
+        String genre = getString(getColumnIndex(DBSchema.BookTable.Cols.GENRE));
         String published = getString(getColumnIndex(DBSchema.BookTable.Cols.PUBLISHED));
         String series = getString(getColumnIndex(DBSchema.BookTable.Cols.SERIES));
         String seriesNumb = getString(getColumnIndex(DBSchema.BookTable.Cols.NUMBER_SERIES));
@@ -30,6 +31,7 @@ public class CursorWrapper extends android.database.CursorWrapper {
         Book book = new Book(UUID.fromString(uuid));
         book.setCover(cover);
         book.setTitle(title);
+        book.setGenre(genre);
         book.setPublished(published);
         book.setSeries(series);
         book.setSeriesNumb(seriesNumb);

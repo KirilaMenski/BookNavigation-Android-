@@ -97,6 +97,7 @@ public class BookDAOImpl implements BookDAO {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBSchema.BookTable.Cols.UUID, book.getId().toString());
         contentValues.put(DBSchema.BookTable.Cols.COVER, book.getCover().toString());
+        contentValues.put(DBSchema.BookTable.Cols.GENRE, book.getCover().toString());
         contentValues.put(DBSchema.BookTable.Cols.TITLE, book.getTitle());
         contentValues.put(DBSchema.BookTable.Cols.PUBLISHED, book.getPublished());
         contentValues.put(DBSchema.BookTable.Cols.SERIES, book.getSeries());

@@ -10,6 +10,7 @@ public class Book {
     private UUID mId;
     private String mCover;
     private String mTitle;
+    private String mGenre;
     private String mPublished;
     private String mSeries;
     private String mSeriesNumb;
@@ -28,9 +29,10 @@ public class Book {
 
     public Book(String title, String published, String series, String seriesNumb,
                 String description, String authorName, UUID id, String read, String inList,
-            String cover) {
+            String cover, String genre) {
         this.mTitle = title;
         this.mCover = cover;
+        this.mGenre = genre;
         this.mPublished = published;
         this.mSeries = series;
         this.mSeriesNumb = seriesNumb;
@@ -119,5 +121,13 @@ public class Book {
 
     public void setCover(String cover) {
         mCover = cover;
+    }
+
+    public String getGenre() {
+        return mGenre;
+    }
+
+    public void setGenre(String genre) {
+        mGenre = genre;
     }
 }

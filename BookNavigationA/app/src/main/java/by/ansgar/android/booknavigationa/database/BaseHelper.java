@@ -24,6 +24,7 @@ public class BaseHelper extends SQLiteOpenHelper {
                         + DBSchema.BookTable.Cols.UUID + ", "
                         + DBSchema.BookTable.Cols.COVER + ", "
                         + DBSchema.BookTable.Cols.TITLE + ", "
+                        + DBSchema.BookTable.Cols.GENRE + ", "
                         + DBSchema.BookTable.Cols.PUBLISHED + ", "
                         + DBSchema.BookTable.Cols.SERIES + ", "
                         + DBSchema.BookTable.Cols.NUMBER_SERIES + ", "
