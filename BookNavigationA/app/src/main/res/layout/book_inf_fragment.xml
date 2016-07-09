@@ -25,11 +25,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="200dp"
-                    android:layout_margin="16dp"
-                    android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="12"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/book_inf_cover"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="16dp"/>
+
+                    <Button
+                        android:id="@+id/book_inf_add_to_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/add_to_list"/>
+
+                    <Button
+                        android:id="@+id/book_inf_was_read"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/was_read"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,7 +87,7 @@
                         android:textSize="@dimen/text_size"/>
 
                     <TextView
-                        android:id="@+id/author_inf_title"
+                        android:id="@+id/book_inf_author"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_color"
@@ -85,7 +109,7 @@
                             android:textSize="@dimen/text_size"/>
 
                         <TextView
-                            android:id="@+id/year_public"
+                            android:id="@+id/book_inf_publish"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
@@ -96,6 +120,22 @@
                             tools:text="1990"/>
 
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/book_inf_genre"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size"/>
+
+                    <TextView
+                        android:id="@+id/book_inf_genre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size"
+                        tools:text="science_fiction"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -112,10 +152,11 @@
                             android:textSize="@dimen/text_size"/>
 
                         <TextView
+                            android:id="@+id/book_inf_series"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/text_size"
@@ -154,10 +195,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <include
-        layout="@layout/bottom_tool_bars"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

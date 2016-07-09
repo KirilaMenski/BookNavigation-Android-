@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/back_color_label_authors"
+        android:background="@color/back_color_labels"
         android:gravity="center"
         android:text="@string/label_author"
         android:textSize="20dp"/>
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/back_color_label_books"
+        android:background="@color/back_color_labels"
         android:gravity="center"
         android:text="@string/label_books"
         android:textSize="20dp"/>
