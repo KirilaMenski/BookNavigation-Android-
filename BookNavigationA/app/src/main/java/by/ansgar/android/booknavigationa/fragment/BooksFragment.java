@@ -10,6 +10,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ import java.util.List;
 
 import by.ansgar.android.booknavigationa.R;
 import by.ansgar.android.booknavigationa.activity.BookInfActivity;
+import by.ansgar.android.booknavigationa.chooser.FileChooser;
 import by.ansgar.android.booknavigationa.database.dao.BookDAO;
 import by.ansgar.android.booknavigationa.database.daoImpl.BookDAOImpl;
 import by.ansgar.android.booknavigationa.database.entity.Book;
@@ -33,7 +37,15 @@ public class BooksFragment extends Fragment {
     private ModelAdapter mAdapter;
     private Resources mResources;
 
+
+
     private BookDAO mBookDAO;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -113,5 +125,28 @@ public class BooksFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateUI();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_item, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_item_add_book:
+                addNewBook();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void addNewBook() {
+        FileChooser fileChooser = new FileChooser(getActivity()).setFilter(".*\\.txt");
+        fileChooser.show();
     }
 }

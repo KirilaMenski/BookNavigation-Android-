@@ -33,7 +33,7 @@ public class BookInfFragment extends Fragment {
 
     private Resources mResources;
 
-    public BookInfFragment(UUID id){
+    public BookInfFragment(UUID id) {
         this.mId = id;
     }
 
@@ -56,6 +56,7 @@ public class BookInfFragment extends Fragment {
         mSeries = (TextView) view.findViewById(R.id.book_inf_series);
         mDescription = (TextView) view.findViewById(R.id.book_inf_description);
         mDescription.setText("The serial number of book is " + mId);
+        mRead = (Button) view.findViewById(R.id.book_inf_read);
 
         return view;
     }

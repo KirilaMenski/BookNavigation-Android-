@@ -11,6 +11,7 @@ public class DBSchema {
 
         public static class Cols{
             public static final String UUID = "id";
+            public static final String PATH = "path";
             public static final String COVER = "cover";
             public static final String TITLE = "title";
             public static final String GENRE = "genre";

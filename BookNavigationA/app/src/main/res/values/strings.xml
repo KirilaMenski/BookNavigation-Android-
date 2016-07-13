@@ -11,4 +11,8 @@
     <string name="book_inf_genre">GENRE:</string>
     <string name="add_to_list">ADD TO LIST</string>
     <string name="was_read">WAS READ</string>
+    <string name="book_inf_activity">Book Information</string>
+    <string name="file_chooser_button_up_label">Parent folder</string>
+    <string name="menu_item_add_book">Add new book</string>
+    <string name="source_path">Add new book</string>
 </resources>

@@ -22,6 +22,7 @@ public class BaseHelper extends SQLiteOpenHelper {
                         + "("
                         + " _id INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + DBSchema.BookTable.Cols.UUID + ", "
+                        + DBSchema.BookTable.Cols.PATH + ", "
                         + DBSchema.BookTable.Cols.COVER + ", "
                         + DBSchema.BookTable.Cols.TITLE + ", "
                         + DBSchema.BookTable.Cols.GENRE + ", "

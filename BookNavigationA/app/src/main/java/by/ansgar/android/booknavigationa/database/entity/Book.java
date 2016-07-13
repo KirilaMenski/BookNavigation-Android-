@@ -8,6 +8,7 @@ import java.util.UUID;
 public class Book {
 
     private UUID mId;
+    private String mPath;
     private String mCover;
     private String mTitle;
     private String mGenre;
@@ -29,7 +30,8 @@ public class Book {
 
     public Book(String title, String published, String series, String seriesNumb,
                 String description, String authorName, UUID id, String read, String inList,
-            String cover, String genre) {
+            String cover, String genre, String path) {
+        this.mPath = path;
         this.mTitle = title;
         this.mCover = cover;
         this.mGenre = genre;
@@ -105,6 +107,14 @@ public class Book {
 
     public void setRead(String read) {
         mRead = read;
+    }
+
+    public String getPath() {
+        return mPath;
+    }
+
+    public void setPath(String path) {
+        mPath = path;
     }
 
     public String getInList() {

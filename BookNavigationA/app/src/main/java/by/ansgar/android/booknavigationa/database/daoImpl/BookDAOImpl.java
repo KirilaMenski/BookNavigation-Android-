@@ -64,7 +64,7 @@ public class BookDAOImpl implements BookDAO {
             }
             cursor.moveToFirst();
             return cursor.getBook();
-        }finally {
+        } finally {
             cursor.close();
         }
     }
@@ -77,7 +77,7 @@ public class BookDAOImpl implements BookDAO {
             book.setId(UUID.randomUUID());
             book.setTitle("Book #" + i);
             book.setDescription("Description #" + i);
-            book.setAuthorName("Author #" +i);
+            book.setAuthorName("Author #" + i);
             books.add(book);
         }
 //        CursorWrapper cursor = query(null, null);
@@ -93,7 +93,7 @@ public class BookDAOImpl implements BookDAO {
         return books;
     }
 
-    private ContentValues getContentValues(Book book){
+    private ContentValues getContentValues(Book book) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBSchema.BookTable.Cols.UUID, book.getId().toString());
         contentValues.put(DBSchema.BookTable.Cols.COVER, book.getCover().toString());
@@ -110,7 +110,7 @@ public class BookDAOImpl implements BookDAO {
         return contentValues;
     }
 
-    private CursorWrapper query(String whereClause, String[] whereArgs){
+    private CursorWrapper query(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 DBSchema.BookTable.NAME,
                 null,
