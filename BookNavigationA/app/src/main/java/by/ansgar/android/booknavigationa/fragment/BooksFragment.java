@@ -2,7 +2,6 @@ package by.ansgar.android.booknavigationa.fragment;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -79,11 +78,12 @@ public class BooksFragment extends Fragment {
 
         public void bindBook(Book book) {
             mBook = book;
-            if (mBook.getCover() == null) {
+            //TODO
+//            if (mBook.getCover() == null) {
                 mCoverBook.setImageDrawable(mResources.getDrawable(R.drawable.default_cover));
-            } else {
-                mCoverBook.setImageDrawable(Drawable.createFromPath(mBook.getCover()));
-            }
+//            } else {
+//                mCoverBook.setImageDrawable(Drawable.createFromPath(mBook.getCover()));
+//            }
         }
 
         @Override

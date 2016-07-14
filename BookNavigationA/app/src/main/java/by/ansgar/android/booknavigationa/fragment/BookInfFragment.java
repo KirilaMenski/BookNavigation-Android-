@@ -49,13 +49,17 @@ public class BookInfFragment extends Fragment {
         mCover = (ImageView) view.findViewById(R.id.book_inf_cover);
         mCover.setImageDrawable(mResources.getDrawable(R.drawable.default_cover));
         mTitle = (TextView) view.findViewById(R.id.book_inf_title);
-        mTitle.setText("" + mId);
+        mTitle.setText(mBook.getTitle());
         mAuthor = (TextView) view.findViewById(R.id.book_inf_author);
+        mAuthor.setText(mBook.getAuthorName());
         mPublish = (TextView) view.findViewById(R.id.book_inf_publish);
+        mPublish.setText(mBook.getPublished());
         mGenre = (TextView) view.findViewById(R.id.book_inf_genre);
+        mGenre.setText(mBook.getGenre());
         mSeries = (TextView) view.findViewById(R.id.book_inf_series);
+        mSeries.setText(mBook.getSeries() + " - " + mBook.getSeriesNumb());
         mDescription = (TextView) view.findViewById(R.id.book_inf_description);
-        mDescription.setText("The serial number of book is " + mId);
+        mDescription.setText(mBook.getDescription());
         mRead = (Button) view.findViewById(R.id.book_inf_read);
 
         return view;

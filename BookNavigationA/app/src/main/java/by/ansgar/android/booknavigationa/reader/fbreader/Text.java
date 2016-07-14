@@ -1,4 +1,4 @@
-package by.ansgar.android.booknavigationa.reader.fbreader.loadvalues;
+package by.ansgar.android.booknavigationa.reader.fbreader;
 
 import java.util.List;
 import java.util.Map;

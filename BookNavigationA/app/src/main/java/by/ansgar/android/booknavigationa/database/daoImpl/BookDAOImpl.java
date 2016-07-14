@@ -72,24 +72,16 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            Book book = new Book();
-            book.setId(UUID.randomUUID());
-            book.setTitle("Book #" + i);
-            book.setDescription("Description #" + i);
-            book.setAuthorName("Author #" + i);
-            books.add(book);
+        CursorWrapper cursor = query(null, null);
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                books.add(cursor.getBook());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
         }
-//        CursorWrapper cursor = query(null, null);
-//        try{
-//            cursor.moveToFirst();
-//            while (!cursor.isAfterLast()){
-//                books.add(cursor.getBook());
-//                cursor.moveToNext();
-//            }
-//        }finally {
-//            cursor.close();
-//        }
         return books;
     }
 
@@ -97,7 +89,8 @@ public class BookDAOImpl implements BookDAO {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBSchema.BookTable.Cols.UUID, book.getId().toString());
         contentValues.put(DBSchema.BookTable.Cols.COVER, book.getCover().toString());
-        contentValues.put(DBSchema.BookTable.Cols.GENRE, book.getCover().toString());
+        contentValues.put(DBSchema.BookTable.Cols.PATH, book.getPath().toString());
+        contentValues.put(DBSchema.BookTable.Cols.GENRE, book.getGenre().toString());
         contentValues.put(DBSchema.BookTable.Cols.TITLE, book.getTitle());
         contentValues.put(DBSchema.BookTable.Cols.PUBLISHED, book.getPublished());
         contentValues.put(DBSchema.BookTable.Cols.SERIES, book.getSeries());

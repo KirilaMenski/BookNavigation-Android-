@@ -2,7 +2,7 @@ package by.ansgar.android.booknavigationa.chooser;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.AssetManager;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
@@ -33,11 +33,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
+import by.ansgar.android.booknavigationa.activity.BookInfActivity;
 import by.ansgar.android.booknavigationa.database.dao.BookDAO;
 import by.ansgar.android.booknavigationa.database.daoImpl.BookDAOImpl;
 import by.ansgar.android.booknavigationa.database.entity.Book;
-import by.ansgar.android.booknavigationa.reader.fbreader.loadvalues.Description;
-import by.ansgar.android.booknavigationa.reader.fbreader.loadvalues.DescriptionImpl;
+import by.ansgar.android.booknavigationa.reader.fbreader.Description;
+import by.ansgar.android.booknavigationa.reader.fbreader.DescriptionImpl;
 
 /**
  * Created by kirila on 10.7.16.
@@ -71,63 +72,48 @@ public class FileChooser extends AlertDialog.Builder {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.i("File path", mCurrentFile.getText().toString());
-//                        addBook(mTitle.getText() + "/" + mCurrentFile.getText().toString());
-                        AssetManager manager = context.getAssets();
-                        InputStream stream;
-                        try {
-                            stream = manager.open("see.fb2");
-                            addBook(stream);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        String path = mTitle.getText() + "/" + mCurrentFile.getText().toString();
+                        addBook(context, path);
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null);
     }
 
-//    private String[] getFiles(String directoryPath) {
-//        File directory = new File(directoryPath);
-//        File[] files = directory.listFiles();
-//        String[] result = new String[files.length];
-//        for (int i = 0; i < files.length; i++) {
-//            result[i] = files[i].getName();
-//        }
-//        return result;
-//    }
+    private void addBook(Context context, String path) {
 
-    private void addBook(InputStream inputStream) {
-//        Log.i("Path: ", path);
-//        String[] file = path.split("/");
-//        String[] type = file[file.length - 1].split("\\.");
-//        if (type[type.length - 1] == "fb2") {
-        InputStream path = inputStream;
-        Description description = new DescriptionImpl(path);
-        BookDAO bookDAO = new BookDAOImpl(getContext());
-        Book book = new Book();
-        book.setId(UUID.randomUUID());
-        book.setPath("TODO");
-        book.setCover(description.getCover());
-        book.setTitle(description.getTitle());
-        book.setGenre(description.getGenre());
-        //TODO
+        try {
+            InputStream is = context.getAssets().open("giperion.fb2");
+
+            Description description = new DescriptionImpl(is);
+
+            BookDAO bookDAO = new BookDAOImpl(getContext());
+            Book book = new Book();
+            UUID id = UUID.randomUUID();
+            book.setId(id);
+            book.setPath(path);
+            book.setCover(description.getCover());
+            book.setTitle(description.getTitle());
+            book.setGenre(description.getGenre());
+//            TODO
 //            book.setPublished(description.getPublished());
-        book.setSeries(description.getSeries());
-        book.setSeriesNumb(description.getNumOfSer());
-        List<String> anotation = description.getAnotation();
-        String strDescription = new String();
-        for (int i = 0; i < anotation.size(); i++) {
-            strDescription += anotation.get(i);
+            book.setSeries(description.getSeries());
+            book.setSeriesNumb(description.getNumOfSer());
+            List<String> annotation = description.getAnnotation();
+            StringBuilder strDescription = new StringBuilder(" ");
+            for (int i = 0; i < annotation.size(); i++) {
+                strDescription.append(annotation.get(i));
+            }
+            book.setDescription(strDescription.toString());
+            book.setAuthorName(description.getAuthor());
+            book.setRead("0");
+            book.setInList("0");
+            bookDAO.addBook(book);
+            Intent intent = new Intent(context, BookInfActivity.class);
+            intent.putExtra(BookInfActivity.BOOK_ID, id);
+            context.startActivity(intent);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        book.setDescription(strDescription);
-        book.setAuthorName(description.getAuthor());
-        book.setRead("0");
-        book.setInList("0");
-//            bookDAO.addBook(book);
-        Log.i("Description: ", strDescription);
-//        } else {
-//            Toast.makeText(getContext(), "The file is not supported", Toast.LENGTH_LONG).show();
-//            Log.i("Type", type[type.length - 1]);
-//        }
     }
 
     @Override

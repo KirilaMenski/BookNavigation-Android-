@@ -1,8 +1,6 @@
-package by.ansgar.android.booknavigationa.reader.fbreader.loadvalues;
+package by.ansgar.android.booknavigationa.reader.fbreader;
 
 import java.util.List;
-
-import org.w3c.dom.Document;
 
 
 public interface Description {
@@ -21,6 +19,6 @@ public interface Description {
 
 	public String getLang();
 	
-	public List<String> getAnotation();
+	public List<String> getAnnotation();
 
 }
