@@ -23,6 +23,9 @@
             android:name=".activity.BookInfActivity"
             android:label="@string/book_inf_activity"
             android:parentActivityName=".activity.BooksActivity"/>
+        <activity
+            android:name=".activity.BookTextActivity"
+            android:parentActivityName=".activity.BookInfActivity"/>
     </application>
 
 </manifest>

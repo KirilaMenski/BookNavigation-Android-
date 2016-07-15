@@ -1,9 +1,11 @@
 package by.ansgar.android.booknavigationa.fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import java.util.UUID;
 
 import by.ansgar.android.booknavigationa.R;
+import by.ansgar.android.booknavigationa.activity.BookTextActivity;
 import by.ansgar.android.booknavigationa.database.dao.BookDAO;
 import by.ansgar.android.booknavigationa.database.daoImpl.BookDAOImpl;
 import by.ansgar.android.booknavigationa.database.entity.Book;
@@ -21,7 +24,7 @@ import by.ansgar.android.booknavigationa.database.entity.Book;
 /**
  * Created by kirila on 8.7.16.
  */
-public class BookInfFragment extends Fragment {
+public class BookInfFragment extends Fragment implements View.OnClickListener{
 
     private UUID mId;
     private BookDAO mBookDAO;
@@ -37,6 +40,12 @@ public class BookInfFragment extends Fragment {
         this.mId = id;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,23 +54,45 @@ public class BookInfFragment extends Fragment {
 
         mBookDAO = new BookDAOImpl(getActivity());
         mBook = mBookDAO.getBookById(mId);
-
         mCover = (ImageView) view.findViewById(R.id.book_inf_cover);
-        mCover.setImageDrawable(mResources.getDrawable(R.drawable.default_cover));
         mTitle = (TextView) view.findViewById(R.id.book_inf_title);
-        mTitle.setText(mBook.getTitle());
         mAuthor = (TextView) view.findViewById(R.id.book_inf_author);
-        mAuthor.setText(mBook.getAuthorName());
         mPublish = (TextView) view.findViewById(R.id.book_inf_publish);
-        mPublish.setText(mBook.getPublished());
         mGenre = (TextView) view.findViewById(R.id.book_inf_genre);
-        mGenre.setText(mBook.getGenre());
         mSeries = (TextView) view.findViewById(R.id.book_inf_series);
-        mSeries.setText(mBook.getSeries() + " - " + mBook.getSeriesNumb());
         mDescription = (TextView) view.findViewById(R.id.book_inf_description);
-        mDescription.setText(mBook.getDescription());
         mRead = (Button) view.findViewById(R.id.book_inf_read);
-
+        mRead.setOnClickListener(this);
+        setInformation();
         return view;
+    }
+
+    private void setInformation() {
+        if(mBook.getCover() == null){
+            mCover.setImageDrawable(mResources.getDrawable(R.drawable.default_cover));
+        } else {
+            //TODO
+            mCover.setImageDrawable(mResources.getDrawable(R.drawable.default_cover));
+//            Bitmap cover = BitmapFactory.decodeFile(mBook.getCover());
+//            mCover.setImageBitmap(cover);
+        }
+        mTitle.setText(mBook.getTitle());
+        mAuthor.setText(mBook.getAuthorName());
+        mPublish.setText(mBook.getPublished());
+        mGenre.setText(mBook.getGenre());
+        mSeries.setText(mBook.getSeries() + " - " + mBook.getSeriesNumb());
+        mDescription.setText(mBook.getDescription());
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.book_inf_read:
+                Log.i("BookInfFragment: ", "redirect to book inf fragment to " + mBook.getId());
+                Intent intent = new Intent(getActivity(), BookTextActivity.class);
+                intent.putExtra(BookTextActivity.BOOK_TEXT_ID, mBook.getId());
+                startActivity(intent);
+                break;
+        }
     }
 }

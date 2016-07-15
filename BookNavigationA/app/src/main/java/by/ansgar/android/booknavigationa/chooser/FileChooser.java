@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
@@ -54,6 +53,7 @@ public class FileChooser extends AlertDialog.Builder {
     private FilenameFilter mFileNameFilter;
 
     private String mCurrentPath = Environment.getRootDirectory().getAbsolutePath();
+    private String mFile;
 
     private List<File> mFiles = new ArrayList<>();
 
@@ -71,8 +71,7 @@ public class FileChooser extends AlertDialog.Builder {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.i("File path", mCurrentFile.getText().toString());
-                        String path = mTitle.getText() + "/" + mCurrentFile.getText().toString();
+                        String path = "file://" + mTitle.getText() + "/" + mFile;
                         addBook(context, path);
                     }
                 })
@@ -82,10 +81,9 @@ public class FileChooser extends AlertDialog.Builder {
     private void addBook(Context context, String path) {
 
         try {
-            InputStream is = context.getAssets().open("giperion.fb2");
-
+//            InputStream is = context.getAssets().open("giperion.fb2");
+            InputStream is = context.getAssets().open(path);
             Description description = new DescriptionImpl(is);
-
             BookDAO bookDAO = new BookDAOImpl(getContext());
             Book book = new Book();
             UUID id = UUID.randomUUID();
@@ -113,6 +111,7 @@ public class FileChooser extends AlertDialog.Builder {
             context.startActivity(intent);
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(context, "File not found ", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -203,6 +202,7 @@ public class FileChooser extends AlertDialog.Builder {
             if (mSelectedIndex == position) {
                 mCurrentFile.setBackgroundColor(getContext()
                         .getResources().getColor(android.R.color.holo_blue_light));
+                mFile = mCurrentFile.getText().toString();
 
             } else {
                 mCurrentFile.setBackgroundColor(getContext()
