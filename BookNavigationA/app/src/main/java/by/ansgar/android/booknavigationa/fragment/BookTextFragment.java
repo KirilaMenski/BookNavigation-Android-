@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -35,7 +36,7 @@ public class BookTextFragment extends Fragment {
     private TextView mTextView;
     private ScrollView mScrollView;
 
-    public BookTextFragment(UUID id){
+    public BookTextFragment(UUID id) {
         this.mId = id;
     }
 
@@ -49,17 +50,14 @@ public class BookTextFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.book_text, container, false);
-
+        mBookDAO = new BookDAOImpl(getActivity());
+        mBook = mBookDAO.getBookById(mId);
         InputStream is = null;
         try {
-            is = getActivity().getAssets().open("see.fb2");
+            is = new FileInputStream(mBook.getPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        mBookDAO = new BookDAOImpl(getActivity());
-        mBook = mBookDAO.getBookById(mId);
-//        mBookText = new TextImpl(mBook.getPath());
         mBookText = new TextImpl(is);
 
         mTextView = (TextView) view.findViewById(R.id.book_text);
@@ -69,7 +67,7 @@ public class BookTextFragment extends Fragment {
         return view;
     }
 
-    private void setBookText(){
+    private void setBookText() {
 
         List<String> text = mBookText.getText();
         StringBuilder bookText = new StringBuilder(" ");

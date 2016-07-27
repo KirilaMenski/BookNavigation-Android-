@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -71,7 +72,7 @@ public class FileChooser extends AlertDialog.Builder {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String path = "file://" + mTitle.getText() + "/" + mFile;
+                        String path = mTitle.getText() + "/" + mFile;
                         addBook(context, path);
                     }
                 })
@@ -82,7 +83,10 @@ public class FileChooser extends AlertDialog.Builder {
 
         try {
 //            InputStream is = context.getAssets().open("giperion.fb2");
-            InputStream is = context.getAssets().open(path);
+            InputStream is =
+                    new FileInputStream(path)
+//                    context.getAssets().open(path)
+                    ;
             Description description = new DescriptionImpl(is);
             BookDAO bookDAO = new BookDAOImpl(getContext());
             Book book = new Book();

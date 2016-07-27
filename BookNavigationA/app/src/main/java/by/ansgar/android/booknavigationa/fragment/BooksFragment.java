@@ -148,5 +148,7 @@ public class BooksFragment extends Fragment {
     private void addNewBook() {
         FileChooser fileChooser = new FileChooser(getActivity()).setFilter(".*\\.txt");
         fileChooser.show();
+//        new Chooser(getActivity()).showDialog();
     }
+
 }
